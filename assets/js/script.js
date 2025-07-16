@@ -36,3 +36,31 @@ const teamMembers = [
     img: "img/female3.png"
   }
 ];
+
+const generateCard = (member) => {
+  const memberCard = `<div class="col-12 col-md-6 col-lg-4">
+        <div class="card mb-3 bg-black text-white">
+          <div class="row g-3">
+            <div class="col-4">
+              <img src="./assets/${member.img}" class="img-fluid" alt="...">
+            </div>
+            <div class="col-8">
+              <div class="card-body d-flex flex-column pt-3">
+                <h5 class="card-title fw-bold">${member.name}</h5>
+                <p class="card-text">${member.role}</p>
+                <p class="card-text"><small class="text-primary">${member.email}</small></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>`;
+  return memberCard;
+}
+const teamContainer = document.getElementById('team-row');
+
+for (let i = 0; i < teamMembers.length; i++) {
+  let card = generateCard(teamMembers[i]);
+
+  teamContainer.innerHTML += card;
+}
+
