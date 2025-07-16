@@ -42,7 +42,7 @@ const generateCard = (member) => {
         <div class="card mb-3 bg-black text-white">
           <div class="row g-3">
             <div class="col-4">
-              <img src="./assets/${member.img}" class="object-fit-cover" alt="...">
+              <img src="./assets/${member.img}" class="object-fit-cover h-100 w-100" alt="...">
             </div>
             <div class="col-8">
               <div class="card-body d-flex flex-column pt-3">
