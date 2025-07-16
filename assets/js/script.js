@@ -56,11 +56,42 @@ const generateCard = (member) => {
       </div>`;
   return memberCard;
 }
+
 const teamContainer = document.getElementById('team-row');
+const subButton = document.getElementById('sub-button');
+const generateMembersCard = (teamMembers) => {
+  for (let i = 0; i < teamMembers.length; i++) {
+    let card = generateCard(teamMembers[i]);
 
-for (let i = 0; i < teamMembers.length; i++) {
-  let card = generateCard(teamMembers[i]);
-
-  teamContainer.innerHTML += card;
+    teamContainer.innerHTML += card;
+  }
 }
+generateMembersCard(teamMembers)
+subButton.addEventListener('click', (e) => {
+  e.preventDefault();
 
+  const name = document.getElementById('name').value;
+  const role = document.getElementById('role').value;
+  const email = document.getElementById('email').value;
+  const img = document.getElementById('img').value;
+
+  if (name == '' || role == '' || email == '' || img == '') {
+    alert('Tutti i campi sono obbligatori');
+    return;
+  }
+  teamContainer.innerHTML = '';
+  const newMember = {
+    name,
+    role,
+    img,
+    email
+  }
+  teamMembers.push(newMember)
+
+  document.getElementById('name').value = '';
+  document.getElementById('role').value = '';
+  document.getElementById('email').value = '';
+  document.getElementById('img').value = '';
+
+  generateMembersCard(teamMembers)
+})
